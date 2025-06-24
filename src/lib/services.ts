@@ -1,4 +1,15 @@
-const API_URL = import.meta.env.VITE_API_URL || '/api'
+// const API_URL = import.meta.env.VITE_API_URL || '/api'
+
+declare global {
+  interface Window {
+    env?: { [key: string]: string }
+  }
+}
+
+export const API_URL = window.env?.VITE_API_URL || import.meta.env.VITE_API_URL
+export const CONFIG_VAR = window.env?.CONFIG_VAR || 'Config-var unknown'
+export const CONFIG_VAR1 = window.env?.CONFIG_VAR1 || 'Config-var1 unknown'
+export const CONFIG_VAR2 = window.env?.CONFIG_VAR2 || 'Config-var2 unknown'
 
 export async function getProducts() {  
   const res = await fetch(API_URL + '/products')
