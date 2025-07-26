@@ -80,7 +80,7 @@ jobs:
         run: |
           cd helm-charts
           yq e '.image.tag = "${{ github.sha }}"' -i charts/frontend/values.yaml
-          yq e '.image.repository = "${{ secrets.DOCKER_USERNAME }}/products-app-devops-frontend"' -i charts/frontend/values.yaml
+          yq e '.image.repository = "${{ secrets.DOCKERHUB_USER }}/products-app-devops-frontend"' -i charts/frontend/values.yaml
 
       - name: Commit and Push Changes
         run: |
